@@ -1,10 +1,6 @@
 # dogFoodPortions
-
-dogFoodPortions
-===============
-
-A silly little tool for Portions
---------------------------------
+A silly little tool for divvying food
+-------------------------------------
 
 >This is my Dog Food Portions Trasitioner App. Just for practice's 
 >sake, with JavaScript. The idea is to finish something, which in this 
