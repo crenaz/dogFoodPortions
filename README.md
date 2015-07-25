@@ -8,4 +8,4 @@ A silly little tool for divvying food
 
 This tool will ask for the number of days over which shall be transitioned two(for now) different types of dog food, or cats.  It'll start as a command line tool and then I'll put a GUI on it.s
 
-###made by crenaz using vim on ubuntu 14.04
+####made by crenaz using vim on ubuntu 14.04

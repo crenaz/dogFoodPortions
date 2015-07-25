@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>jQuery UI Slider - Range with fixed minimum</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <style>body {font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";font-size: 62.5%;}</style>
+  <script>
+  $(function() {
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: 31,
+      min: 1,
+      max: 365,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( ui.value );
+      }
+    });
+    $( "#amount" ).val( $( "#slider-range-min" ).slider( "value" ) );
+  });
+  </script>
+</head>
+<body>
+ 
+<p>
+  <label for="amount">Maximum Days:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+ 
+<div id="slider-range-min"></div>
+ 
+ 
+</body>
+</html>
