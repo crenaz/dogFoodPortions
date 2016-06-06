@@ -1,36 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <title>Dog Food Portions</title>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <style>body {font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";font-size: 62.5%;}</style>
-  <script>
-  $(function() {
-    $( "#slider-range-min" ).slider({
-      range: "min",
-      value: 31,
-      min: 1,
-      max: 365,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( ui.value );
-      }
-    });
-    $( "#amount" ).val( $( "#slider-range-min" ).slider( "value" ) );
-  });
-  </script>
+    <head>
+        <meta charset="utf-8">
+        <title>Dog Food Portions</title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <style>body {font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";font-size: 62.5%;}</style>
+        <script>
+            $(function() {
+                $( "#slider-range-min" ).slider({
+                    range: "min",
+                    value: 31,
+                    min: 1,
+                    max: 365,
+                    slide: function( event, ui ) {
+                        $( "#amount" ).val( ui.value );
+                    }
+                });
+                $( "#amount" ).val( $( "#slider-range-min" ).slider( "value" ) );
+            });
+        </script>
 </head>
 <body>
- 
 <p>
   <label for="amount">Maximum Days:</label>
   <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
 </p>
- 
 <div id="slider-range-min"></div>
- 
- 
+<div ng-app="carousel">
+  <div class="container" ng-controller="folderCtrl"> 
+    <!-- Carousel
+        ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" ng-repeat="img in images" class="{active : (img === 0)}" data-slide-to="{{img}}"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div ng-class="{item: true, active : (img === 0)}" ng-repeat="img in images"> <img ng-src="{{uri}}/{{w}}/{{h}}/{{currentFolder}}/{{img}}" alt="Slide numder {{img}}">
+          <div class="container">
+            <div class="carousel-caption"> </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
+    <!-- /.carousel --> 
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-botom" role="navigation">
+      <div class="container">
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ng-repeat="folder in folders" class="{{activeFolder(folder)}}" ng-click="selectFolder(folder)"> <a ng-href="#{{folder}}">{{folder}}</a> </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse --> 
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
 </body>
 </html>
